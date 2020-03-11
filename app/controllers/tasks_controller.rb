@@ -43,7 +43,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'タスクは正常に登録されました.' }
+        format.html { redirect_to tasks_path, notice: 'タスクは正常に更新されました.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }

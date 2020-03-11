@@ -23,11 +23,7 @@ a:hover {
   color: #fff;
   background-color: #000; }
 
-th {
-  padding-bottom: 5px; }
 
-td {
-  padding: 0 5px 7px; }
 
 div.field,
 div.actions {
@@ -63,3 +59,9 @@ div.actions {
 
 label {
   display: block; }
+
+.error_message {
+  color: red;
+}
+
+
