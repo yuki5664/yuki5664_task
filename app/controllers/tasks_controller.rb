@@ -11,31 +11,30 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    @task = Task.find(params[:id])
   end
 
   # GET /tasks/new
-  def new
-    @task = Task.new
-  end
 
   # GET /tasks/1/edit
   def edit
+    @task = Task.find(params[:id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-
-    respond_to do |format|
-      if @task.save
+      respond_to do |format|
+        if @task.save
         format.html { redirect_to tasks_path, notice: 'タスクは正常に登録されました.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
+        format.json { render :show, status: :ok, location: @task }
+        else
+        @tasks = Task.all
+        format.html { render :index }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /tasks/1
@@ -56,10 +55,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_path, notice: 'タスクは正常に削除されました.' }
-      format.json { head :no_content }
-    end
+    redirect_to tasks_path
   end
 
   private
