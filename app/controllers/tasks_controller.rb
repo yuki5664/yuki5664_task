@@ -53,9 +53,12 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
-  def destroy
+    def destroy
     @task.destroy
-    redirect_to tasks_path
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'タスクは正常に削除されました' }
+      format.json { head :no_content }
+    end
   end
 
   private
