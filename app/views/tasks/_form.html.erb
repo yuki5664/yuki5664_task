@@ -1,6 +1,6 @@
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
-    <div id="error_explanation">
+    <div class="error_message">
       <h2>【エラー内容】</h2>
 
       <ul>
@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :タイトル %>
+    <b><%= form.label :タイトル %></b><br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :名前 %>
+    <b><%= form.label :内容 %></b><br>
     <%= form.text_area :body %>
   </div>
 
